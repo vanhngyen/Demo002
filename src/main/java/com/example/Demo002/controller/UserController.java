@@ -33,7 +33,13 @@ public class UserController {
         return "addUser";
     }
 
-    @RequestMapping(value = "/save",method = RequestMethod.GET)
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    public String save(User user){
+       userRepository.save(user);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/edit",method = RequestMethod.GET)
     public String editUser(@RequestParam("id") Long userId , Model model){
         Optional<User> userEdit = userRepository.findById(userId);
         userEdit.ifPresent(user -> model.addAttribute("user",user));
