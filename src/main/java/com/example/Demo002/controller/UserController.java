@@ -46,7 +46,7 @@ public class UserController {
         return "editUser";
     }
 
-    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete",method = RequestMethod.GET)
     public String deleteUser(@RequestParam("id") Long userId,Model model){
         userRepository.deleteById(userId);
         return "redirect:/";
